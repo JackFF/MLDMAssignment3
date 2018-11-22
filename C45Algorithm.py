@@ -14,12 +14,20 @@ def calculateEntropy(data):
     #count how many columns then seperate them
     #iterate through and count how many answers there are
     #add up and caculate entropy
-
+    classes = list(data.head(0))
+    print(classes[0])
+    print(len(classes))
+    x = len(classes)
+    i = 0
+    while i < x:
+        print("hello")
+        print(data.iloc[:, i]) #prints each column out, must make it do something now
+        i = i + 1
 
 def main():
     df = pd.read_csv("owls.csv") #reading in the data
     trainingData, testingData = splitDataIntoTrainingAndTesting(df) #splitting the data into testing and training
-    x = calculateEntropy(df)
+    entropy = calculateEntropy(df)
     
 
 if __name__ == "__main__":
