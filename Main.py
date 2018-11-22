@@ -1,11 +1,15 @@
 from tkinter import *
+import pandas as pd
+import numpy as np
+import C45AlgorithmTest
+import Node
 
 root = Tk()
 root.title("Machine Learning & Data Mining")
 root.geometry("450x335")
 
-def printName():
-    print("Stupid ass bitch I aint fucking with you")
+def owls():
+    C45AlgorithmTest.main()
 
 def exitApplication():
     root.destroy()
@@ -21,7 +25,7 @@ topLabel = Label(topFrame, text="This is an application that uses the C4.5 algor
 topLabel.pack()
 
 b1 = Button(bottomFrame, text="Use the owls.csv\ndata", width="15", height="15", font=(30))
-b1.config(command=printName)
+b1.config(command=owls)
 
 b2 = Button(bottomFrame, text="Upload your own\ndata files", width="15", height="15", font=(30))
 b2.config()
