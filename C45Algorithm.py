@@ -9,24 +9,33 @@ def splitDataIntoTrainingAndTesting(data):
 
     return train, test #returns training and testing data
 
+def calculateGlobalEntropy(data):
+    globalEntropyData = {} #set for the global entropy data
+    for row in (data.iloc[:, -1]): #itterates through the last column in the data set
+        if row not in globalEntropyData: globalEntropyData[row] = 0 #adds the data to the set
+        globalEntropyData[row] += 1
+
+    globalEntropy = 0.0 #global entropy variable
+    for row in globalEntropyData.values(): #itterates through our global entropy set
+        p = float(row) / len(data.iloc[:, 4]) #calculating global entropy
+        globalEntropy -= p * np.log2(p) #calculating global entropy
+
+    return globalEntropy
+
 def calculateEntropy(data):
-    #get in data, get headings, easy to do list(.head(1)) or something like that
-    #count how many columns then seperate them
-    #iterate through and count how many answers there are
-    #add up and caculate entropy
-    classes = list(data.head(0))
-    print(classes[0])
-    print(len(classes))
-    x = len(classes)
     i = 0
+    x = len(list(data.head(0)))
+    #print(x)
+
     while i < x:
         print("hello")
-        print(data.iloc[:, i]) #prints each column out, must make it do something now
-        i = i + 1
+        i += 1
 
 def main():
     df = pd.read_csv("owls.csv") #reading in the data
     trainingData, testingData = splitDataIntoTrainingAndTesting(df) #splitting the data into testing and training
+    globalEntropy = calculateGlobalEntropy(df)
+    #print(globalEntropy)
     entropy = calculateEntropy(df)
     
 
